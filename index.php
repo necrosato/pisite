@@ -11,18 +11,25 @@
                 <th colspan="6">Fall 2017 Classes</th>
             </tr>
             <tr>
-                <td colspan="2">CIS 110</td>
-                <td colspan="2">CIS 111</td>
-                <td colspan="2">CIS 122</td>
+                <th colspan="1">Rates</th>
+                <th colspan="5">Classes</th>
             </tr>
             <tr>
-                <td colspan="3">CIS 210</td>
-                <td colspan="3">CIS 212</td>
+                <td colspan="1">$15/hr</td>
+                <td colspan="1">CIS 110</td>
+                <td colspan="1">CIS 111</td>
+                <td colspan="3">CIS 122</td>
             </tr>
             <tr>
-                <td colspan="2">CIS 313</td>
-                <td colspan="2">CIS 314</td>
-                <td colspan="2">CIS 415</td>
+                <td colspan="1">$20/hr</td>
+                <td colspan="1">CIS 210</td>
+                <td colspan="4">CIS 212</td>
+            </tr>
+            <tr>
+                <td colspan="1">$25/hr</td>
+                <td colspan="1">CIS 313</td>
+                <td colspan="1">CIS 314</td>
+                <td colspan="3">CIS 415</td>
             </tr>
         </table>
 
@@ -187,9 +194,10 @@
             </tr>
         </table>
 
-        <img src="ballmer_peak.png" />
+        <img src="ballmer_peak.png"/>
         <?php
-            echo "PHP test"; //comment
+            echo "PHP test\n"; //comment
+            echo "I want this on a new line"; //comment
         ?>
     </body>
 </html>
