@@ -193,10 +193,21 @@
                 <td bgcolor="green"></td>
             </tr>
         </table>
+        
+        <form action="/schedule_page.php" method="post">
+            Name:<br>
+            <input type="text" name="name"><br>
+            Email Address:<br>
+            <input type="text" name="email"><br>
+            Phone Number:<br>
+            <input type="text" name="phone"><br>
+            <input type="submit" value="Schedule"><br>
+        </form>
 
         <img src="ballmer_peak.png"/>
         <?php
-            echo "PHP test\n"; //comment
+            echo "<p>"; // this is like \n
+            echo "PHP test<p>"; //comment
             echo "I want this on a new line"; //comment
         ?>
     </body>
