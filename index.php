@@ -1,5 +1,3 @@
-<!doctype html>
-
 <html>
     <head>
         <title>Naookie Sato CIS Tutoring</title>
@@ -190,6 +188,9 @@
         </table>
 
         <img src="ballmer_peak.png" />
+        <?php
+            echo "PHP test"; //comment
+        ?>
     </body>
 </html>
 
