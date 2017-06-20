@@ -4,7 +4,7 @@
     </head>
 
     <body>
-        <img src="IMG_6145.PNG"/>
+        <img src="dsudo.jpg"/>
         <h1>Naookie Sato CIS Tutoring</h1>
 
         <table border="1">
