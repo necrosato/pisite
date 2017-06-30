@@ -6,6 +6,11 @@ var app = connect();
 
 //404 response
 function pageNotFound(request, response) {
+    process.stdout.write("Cannot serve ");
+    process.stdout.write(request.url);
+    process.stdout.write(" with ");
+    process.stdout.write(request.method);
+    process.stdout.write('\n');
     response.writeHead(404, {"Content-Type": "text/plain"});
     response.write("Error 404: Page ");
     response.write(request.url);
@@ -13,19 +18,33 @@ function pageNotFound(request, response) {
     response.end();
 }
 
+function servePage(url, response) {
+    process.stdout.write("about to serve page: www.naookiesato.com");
+    process.stdout.write(url);
+    response.writeHead(200, {"Content-Type": "text/html"});
+    fs.createReadStream("."+url).pipe(response);
+    process.stdout.write(" ... done\n");
+}
+
+function serveImage(url, response, ext) {
+    process.stdout.write("about to serve image: www.naookiesato.com");
+    process.stdout.write(url);
+    response.writeHead(200, {"Content-Type": ("image/"+ext)});
+    fs.createReadStream("."+url).pipe(response);
+    process.stdout.write(" ... done\n");
+}
+
 function onRequest(request, response, next) {
-    if (request.url == '/' || request.url == '/index.html') {
-        console.log("about to serve page: www.naookiesato.com/");
-        response.writeHead(200, {"Content-Type": "text/html"});
-        fs.createReadStream("./index.html").pipe(response);
-    }
-    else {
-        process.stdout.write("Cannot serve ")
-        process.stdout.write(request.url);
-        process.stdout.write(" with ");
-        process.stdout.write(request.method);
-        process.stdout.write('\n');
-        pageNotFound(request, response);
+    switch (request.url) {
+        case "/":
+            servePage("/index.html", response);
+            break;
+        case "/index.html":
+            servePage(request.url, response);
+            break;
+        default:
+            pageNotFound(request, response);
+            break;
     }
     next();
 }
@@ -34,9 +53,6 @@ function logRequest(request, response, next) {
         process.stdout.write(new Date().toString());
         process.stdout.write(": request recieved: ");
         process.stdout.write(request.url);
-        //This doesnt work
-        //process.stdout.write(" from client ");
-        //process.stdout.write(request.connection.remoteAddress.toString());
         process.stdout.write('\n');
         next();
 }
@@ -45,5 +61,7 @@ app.use(logRequest);
 app.use(onRequest);
 
 var server = http.createServer(app);
+
 server.listen(8090);
+
 console.log("server up:");
