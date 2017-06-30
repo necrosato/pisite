@@ -33,6 +33,13 @@ function onRequest(request, response, next) {
         response.writeHead(200, {"Content-Type": "image/png"});
         fs.createReadStream("./IMG_6145.PNG").pipe(response);
     }
+    else if (request.url == '/ballmer_peak.png') {
+        process.stdout.write("about to serve image: www.naookiesato.com");
+        process.stdout.write(request.url);
+        process.stdout.write('\n');
+        response.writeHead(200, {"Content-Type": "image/png"});
+        fs.createReadStream('./ballmer_peak.png').pipe(response);
+    }
     else {
         process.stdout.write("Cannot serve ")
         process.stdout.write(request.url);
