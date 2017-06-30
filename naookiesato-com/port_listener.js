@@ -15,30 +15,31 @@ function pageNotFound(request, response) {
 
 function onRequest(request, response, next) {
     if (request.url == '/' || request.url == '/index.html') {
-        console.log("about to serve page: www.naookiesato.com/");
+        process.stdout.write("about to serve page: www.naookiesato.com/");
         response.writeHead(200, {"Content-Type": "text/html"});
         fs.createReadStream("./index.html").pipe(response);
+        process.stdout.write(" ... done\n");
     }
     else if (request.url == '/schedule_page.html') {
-        process.stdout.write("about to serve page: www.naookiesato.com");
+        process.stdout.write("about to serve page: www.naookiesato.com/");
         process.stdout.write(request.url);
-        process.stdout.write('\n');
         response.writeHead(200, {"Content-Type": "text/html"});
         fs.createReadStream("./schedule_page.html").pipe(response);
+        process.stdout.write(" ... done\n");
     }
     else if (request.url == '/IMG_6145.PNG') {
         process.stdout.write("about to serve image: www.naookiesato.com");
         process.stdout.write(request.url);
-        process.stdout.write('\n');
         response.writeHead(200, {"Content-Type": "image/png"});
         fs.createReadStream("./IMG_6145.PNG").pipe(response);
+        process.stdout.write(" ... done\n");
     }
     else if (request.url == '/ballmer_peak.png') {
         process.stdout.write("about to serve image: www.naookiesato.com");
         process.stdout.write(request.url);
-        process.stdout.write('\n');
         response.writeHead(200, {"Content-Type": "image/png"});
         fs.createReadStream('./ballmer_peak.png').pipe(response);
+        process.stdout.write(" ... done\n");
     }
     else {
         process.stdout.write("Cannot serve ")
