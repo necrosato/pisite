@@ -21,7 +21,7 @@ function pageNotFound(request, response) {
 function servePage(url, response) {
     process.stdout.write("about to serve page: www.necrosato.com");
     process.stdout.write(url);
-    response.writeHead(200, {"Content-Type": "text/html"});
+    response.writeHead(200, {"content-type": "text/html"});
     fs.createReadStream("../"+url).pipe(response);
     process.stdout.write(" ... done\n");
 }
@@ -40,6 +40,9 @@ function onRequest(request, response, next) {
             servePage("/html/index.html", response);
             break;
         case "/html/index.html":
+            servePage(request.url, response);
+            break;
+        case "/js/scripts.min.js":
             servePage(request.url, response);
             break;
         default:
