@@ -1,2 +1,2 @@
 console.log("module2");
-alert("SPOOKY");
+alert("You've found a secret site!");
