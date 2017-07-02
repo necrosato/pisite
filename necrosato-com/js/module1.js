@@ -1,2 +1,3 @@
 console.log("module1");
-$('h1').html("module 1 jquery test");
+var $ = require("jquery");
+$('h1').html("JavaScript is taking over my life");
