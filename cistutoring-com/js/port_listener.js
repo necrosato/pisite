@@ -19,7 +19,7 @@ function pageNotFound(request, response) {
 }
 
 function servePage(url, response) {
-    process.stdout.write("about to serve page: www.naookiesato.com");
+    process.stdout.write("about to serve page: www.cistutoring.com");
     process.stdout.write(url);
     response.writeHead(200, {"Content-Type": "text/html"});
     fs.createReadStream("../"+url).pipe(response);
@@ -27,7 +27,7 @@ function servePage(url, response) {
 }
 
 function serveImage(url, response, ext) {
-    process.stdout.write("about to serve image: www.naookiesato.com");
+    process.stdout.write("about to serve image: www.cistutoring.com");
     process.stdout.write(url);
     response.writeHead(200, {"Content-Type": ("image/"+ext)});
     fs.createReadStream("../"+url).pipe(response);
@@ -41,15 +41,6 @@ function onRequest(request, response, next) {
             break;
         case "/html/index.html":
             servePage(request.url, response);
-            break;
-        case "/html/schedule_page.html":
-            servePage(request.url, response);
-            break;
-        case "/images/IMG_6145.PNG":
-            servePage(request.url, response, "png");
-            break;
-        case "/images/ballmer_peak.png":
-            servePage(request.url, response, "png");
             break;
         default:
             pageNotFound(request, response);
