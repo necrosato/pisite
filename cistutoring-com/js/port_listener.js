@@ -37,9 +37,12 @@ function serveImage(url, response, ext) {
 function onRequest(request, response, next) {
     switch (request.url) {
         case "/":
-            servePage("/html/index.html", response);
+            servePage("/html/about.html", response);
             break;
-        case "/html/index.html":
+        case "/html/about.html":
+            servePage(request.url, response);
+            break;
+        case "/html/contact.html":
             servePage(request.url, response);
             break;
         default:
