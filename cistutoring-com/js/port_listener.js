@@ -26,6 +26,13 @@ function servePage(url, response) {
     process.stdout.write(" ... done\n");
 }
 
+function serveCSS(url, response) {
+    process.stdout.write("about to serve page: www.cistutoring.com");
+    process.stdout.write(url);
+    response.writeHead(200, {"Content-Type": "css/html"});
+    fs.createReadStream("../"+url).pipe(response);
+    process.stdout.write(" ... done\n");
+}
 function serveImage(url, response, ext) {
     process.stdout.write("about to serve image: www.cistutoring.com");
     process.stdout.write(url);
@@ -44,6 +51,9 @@ function onRequest(request, response, next) {
             break;
         case "/html/contact.html":
             servePage(request.url, response);
+            break;
+        case "/ugly.css":
+            serveCSS(request.url, response);
             break;
         default:
             pageNotFound(request, response);
